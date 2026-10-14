@@ -1,0 +1,180 @@
+##
+# Run all LocalGov Drupal tests.
+##
+
+# Define pipeline stages.
+stages:
+  - build
+  - lint
+  - test
+
+variables:
+  # Default PHP version to use.
+  PHP_VERSION: php8.3
+  # Drupal CI image to use.
+  DRUPAL_IMAGE: localgovdrupal/apache-php:$PHP_VERSION
+  # Database server image to use.
+  DATABASE_IMAGE: mariadb:lts
+  # Path to Drupal install.
+  DRUPAL_ROOT: $CI_PROJECT_DIR
+  # Composer stuff.
+  COMPOSER_ALLOW_SUPERUSER: 1
+  COMPOSER_DISCARD_CHANGES: 1
+  COMPOSER_NO_INTERACTION: 1
+
+# Default rules.
+.default_rules: &default_rules
+  # Run jobs on the default branch.
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  # Run jobs on pull requests.
+  - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
+# Set some global defaults.
+default:
+  interruptible: true
+  image:
+    name: $DRUPAL_IMAGE
+  retry:
+    max: 2
+    when:
+      - unknown_failure
+      - api_failure
+      - stuck_or_timeout_failure
+      - runner_system_failure
+      - scheduler_failure
+
+# Composer install.
+.composer: &composer
+  stage: build
+  rules:
+    - *default_rules
+  script:
+    # Required dev dependencies.
+    - composer require --no-install 'drupal/better_exposed_filters:^7.1' 'drupal/facets:^3.0' 'drupal/facets_form:^1.3' 'drupal/group:^3.2'
+    - composer install
+    - |
+      echo "
+      <IfModule mod_php.c>
+        php_value zend.assertions                   1
+        # Revert this part when https://www.drupal.org/project/drupal/issues/3398033 is fixed in Drupal core.
+        php_value assert.active                   1
+      </IfModule>
+      " >> web/.htaccess
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - ./
+    untracked: true
+
+# PHPCS template.
+.phpcs:
+  stage: lint
+  allow_failure: true
+  rules:
+    - *default_rules
+  script:
+    - ./bin/phpcs
+
+# PHPSTAN template.
+.phpstan:
+  stage: lint
+  allow_failure: true
+  rules:
+    - *default_rules
+  script:
+    - ./bin/phpstan analyse -c $DRUPAL_ROOT/phpstan.neon $DRUPAL_ROOT/web/profiles/contrib/localgov* $DRUPAL_ROOT/web/modules/contrib/localgov* web/themes/contrib/localgov*
+
+# PHPUnit template.
+.phpunit:
+  stage: test
+  rules:
+    - *default_rules
+  services:
+    # Database server.
+    - name: $DATABASE_IMAGE
+      alias: database
+    # Chrome driver.
+    - name: drupalci/webdriver-chromedriver:production
+      alias: chrome
+      entrypoint:
+        - chromedriver
+        - '--no-sandbox'
+        - '--log-path=/tmp/chromedriver.log'
+        - '--verbose'
+        - '--allowed-ips='
+  variables:
+    # Database variables.
+    MYSQL_ROOT_PASSWORD: toor
+    MYSQL_DATABASE: database
+    MYSQL_USER: database
+    MYSQL_PASSWORD: database
+    # Apache variables.
+    APACHE_DOCUMENT_ROOT: /var/www/html/web
+    # PHPUnit test variables.
+    BROWSERTEST_OUTPUT_BASE_URL: http://localhost
+    BROWSERTEST_OUTPUT_DIRECTORY: $CI_PROJECT_DIR/web/sites/simpletest/browser_output
+    MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-dev-shm-usage","--disable-gpu","--headless","--dns-prefetch-disable"]}}, "http://localhost:9515"]'
+    SIMPLETEST_BASE_URL: http://localhost
+    SIMPLETEST_DB: mysql://database:database@database/database
+    # Don't fail on deprecation warnings.
+    SYMFONY_DEPRECATIONS_HELPER: weak
+  before_script:
+    # Wait for database.
+    - while ! mysqladmin ping -h database --ssl=0 2>&1 >/dev/null; do sleep 1; done
+    # Start Apache.
+    - rm -fr /var/www/html
+    - ln -sf $DRUPAL_ROOT /var/www/html
+    - /usr/sbin/apache2ctl -D FOREGROUND &
+    # Configure PHPUnit.
+    - cd $DRUPAL_ROOT
+    - mkdir -p $BROWSERTEST_OUTPUT_DIRECTORY
+    - chmod 777 $BROWSERTEST_OUTPUT_DIRECTORY
+    - sed -i "s#http://localgov.lndo.site#http://localhost#" phpunit.xml.dist
+    - chown -R docker:docker $DRUPAL_ROOT
+  script:
+    - sudo -E -u docker bin/paratest --log-junit=$BROWSERTEST_OUTPUT_DIRECTORY/junit.xml
+  artifacts:
+    when: always
+    expire_in: 1 week
+    expose_as: reports
+    paths:
+      - $BROWSERTEST_OUTPUT_DIRECTORY
+    reports:
+      junit: $BROWSERTEST_OUTPUT_DIRECTORY/junit.xml
+
+# PHP 8.3.
+composer:php8.3:
+  extends: .composer
+  variables:
+    PHP_VERSION: php8.3
+
+phpcs:php8.3:
+  extends: .phpcs
+  dependencies:
+    - composer:php8.3
+
+phpstan:php8.3:
+  extends: .phpstan
+  dependencies:
+    - composer:php8.3
+
+phpunit:php8.3:
+  extends: .phpunit
+  dependencies:
+    - composer:php8.3
+
+# PHP 8.4.
+composer:php8.4:
+  extends: .composer
+  variables:
+    PHP_VERSION: php8.4
+
+phpstan:php8.4:
+  extends: .phpstan
+  dependencies:
+    - composer:php8.4
+
+phpunit:php8.4:
+  extends: .phpunit
+  dependencies:
+    - composer:php8.4
