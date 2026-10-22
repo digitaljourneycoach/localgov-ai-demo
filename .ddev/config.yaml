@@ -1,4 +1,4 @@
-name: d11-localgov
+name: localgov-ai-demo
 type: drupal11
 docroot: web
 php_version: "8.3"
