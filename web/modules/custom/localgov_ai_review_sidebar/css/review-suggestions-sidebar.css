@@ -1,0 +1,208 @@
+/**
+ * @file
+ * The "Review suggestions" list in the node edit form sidebar.
+ *
+ * Colours use Gin's custom properties where it defines them, with fallbacks
+ * that also read in Claro.
+ */
+
+.lgd-ai-review {
+  --lgd-ai-review-good: #2a7d4f;
+  --lgd-ai-review-warning: #9a5b00;
+  --lgd-ai-review-critical: #c4292c;
+  --lgd-ai-review-none: #6b6b6b;
+  --lgd-ai-review-border: var(--gin-border-color, #d3d4d9);
+  --lgd-ai-review-muted: var(--gin-color-text-light, #545560);
+  font-size: 0.875rem;
+  /* Gin hyphenates sidebar text, which breaks up quoted words. */
+  hyphens: manual;
+}
+
+.lgd-ai-review__tier--good { --lgd-ai-review-tier: var(--lgd-ai-review-good); }
+.lgd-ai-review__tier--warning { --lgd-ai-review-tier: var(--lgd-ai-review-warning); }
+.lgd-ai-review__tier--critical { --lgd-ai-review-tier: var(--lgd-ai-review-critical); }
+.lgd-ai-review__tier--none { --lgd-ai-review-tier: var(--lgd-ai-review-none); }
+
+.lgd-ai-review__overall {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.5rem;
+  margin-block-end: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-inline-start: 4px solid var(--lgd-ai-review-tier);
+  background: var(--gin-bg-item, #f3f4f9);
+  border-radius: 4px;
+}
+
+.lgd-ai-review__overall-label {
+  font-weight: 600;
+}
+
+.lgd-ai-review__score {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.lgd-ai-review__score-max,
+.lgd-ai-review__reviewed {
+  color: var(--lgd-ai-review-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.lgd-ai-review__reviewed {
+  flex-basis: 100%;
+}
+
+.lgd-ai-review__badge {
+  padding: 0.0625rem 0.5rem;
+  border-radius: 1rem;
+  background: var(--lgd-ai-review-tier);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lgd-ai-review__criterion + .lgd-ai-review__criterion {
+  margin-block-start: 1.25rem;
+}
+
+.lgd-ai-review__criterion-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.lgd-ai-review__criterion-score {
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.lgd-ai-review__explanation,
+.lgd-ai-review__none,
+.lgd-ai-review__empty {
+  margin: 0 0 0.75rem;
+  color: var(--lgd-ai-review-muted);
+}
+
+.lgd-ai-review__stale {
+  margin: 0 0 0.75rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 4px;
+  background: #fff4e5;
+  color: #6b3f00;
+}
+
+.lgd-ai-review__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lgd-ai-review__item + .lgd-ai-review__item {
+  margin-block-start: 0.5rem;
+}
+
+.lgd-ai-review__locate {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  cursor: pointer;
+  text-align: start;
+  color: inherit;
+  border: 1px solid var(--lgd-ai-review-border);
+  border-radius: 6px;
+  background: var(--gin-bg-layer, #fff);
+  font: inherit;
+}
+
+.lgd-ai-review__locate:hover,
+.lgd-ai-review__locate:focus-visible,
+.lgd-ai-review__locate.is-active {
+  border-color: var(--gin-color-primary, #0550e6);
+  box-shadow: 0 0 0 1px var(--gin-color-primary, #0550e6);
+}
+
+.lgd-ai-review__locate.is-not-found {
+  border-style: dashed;
+}
+
+.lgd-ai-review__item[data-decision="accepted"] .lgd-ai-review__locate,
+.lgd-ai-review__item[data-decision="ignored"] .lgd-ai-review__locate {
+  opacity: 0.7;
+}
+
+.lgd-ai-review__item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.lgd-ai-review__decision {
+  font-size: 0.75rem;
+  font-weight: 400;
+  white-space: nowrap;
+  color: var(--lgd-ai-review-muted);
+}
+
+.lgd-ai-review__decision--accepted { color: var(--lgd-ai-review-good); }
+.lgd-ai-review__decision--ignored { text-decoration: line-through; }
+
+.lgd-ai-review__value {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+.lgd-ai-review__value--before {
+  background: #fdecec;
+  text-decoration: line-through;
+  text-decoration-color: rgba(196, 41, 44, 0.5);
+}
+
+.lgd-ai-review__value--after {
+  background: #e7f5ec;
+}
+
+.lgd-ai-review__not-found {
+  color: var(--lgd-ai-review-warning);
+  font-size: 0.8125rem;
+  font-style: italic;
+}
+
+.lgd-ai-review__rationale {
+  color: var(--lgd-ai-review-muted);
+  font-size: 0.8125rem;
+}
+
+/* The field a clicked suggestion points at. */
+.lgd-ai-review-flash {
+  border-radius: 6px;
+  animation: lgd-ai-review-flash 2.5s ease-out;
+}
+
+@keyframes lgd-ai-review-flash {
+  0%,
+  60% {
+    box-shadow: 0 0 0 3px #ffbf47;
+    background-color: rgba(255, 191, 71, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 3px transparent;
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lgd-ai-review-flash {
+    animation: none;
+    box-shadow: 0 0 0 3px #ffbf47;
+  }
+}

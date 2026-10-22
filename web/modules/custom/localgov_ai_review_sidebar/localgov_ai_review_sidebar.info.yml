@@ -1,0 +1,8 @@
+name: 'LocalGov AI review sidebar'
+type: module
+description: 'Lists AI Content Review suggestions in the node edit form sidebar, so editors can see every suggestion without opening the review dialog.'
+package: 'LocalGov Drupal demo'
+core_version_requirement: ^11.1
+dependencies:
+  - ai_content_review:ai_content_review
+  - drupal:node
