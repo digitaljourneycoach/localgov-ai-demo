@@ -1,0 +1,9 @@
+name: 'LocalGov demo: bins and recycling'
+type: module
+description: 'Example content for a London borough "Bins, recycling and waste" section, built from service landing, sub-landing and service pages.'
+package: 'LocalGov Drupal demo'
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - localgov_services:localgov_services_landing
+  - localgov_services:localgov_services_sublanding
+  - localgov_services:localgov_services_page

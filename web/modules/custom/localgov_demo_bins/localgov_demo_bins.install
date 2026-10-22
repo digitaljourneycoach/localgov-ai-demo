@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for localgov_demo_bins.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_demo_bins_install($is_syncing) {
+  if (!$is_syncing) {
+    \Drupal::service('localgov_demo_bins.content_manager')->import();
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_demo_bins_uninstall($is_syncing) {
+  if (!$is_syncing) {
+    \Drupal::service('localgov_demo_bins.content_manager')->remove();
+  }
+}
