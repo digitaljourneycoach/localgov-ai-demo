@@ -1,0 +1,7 @@
+name: 'LocalGov AI Answers layout'
+type: module
+description: 'Keeps the AI Answers blocks in the content region at the same width as the page content in LocalGov themes.'
+package: 'LocalGov Drupal demo'
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - ai_answers:ai_answers
