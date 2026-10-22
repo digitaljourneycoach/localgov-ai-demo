@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Before you start · DrupalCon Rotterdam update</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body class="section-prep" data-prev="" data-next="01-title.html" data-first="01-title.html" data-last="12-thanks.html">
+<header class="topbar">
+  <span class="brand"><img src="img/djc-logo-full.svg" alt="Digital Journey Coach"><span class="event">DrupalCon Rotterdam to LocalGov Drupal</span></span>
+  <span class="section-tag">Presenter checklist · not for sharing</span>
+</header>
+<main class="slide" id="main">
+<div class="prep-head">
+  <div>
+    <p class="kicker">Before the webinar</p>
+    <h2 style="margin-bottom:.2em">Before you go live</h2>
+    <p class="small" style="margin:0">Tick each one off as you go. Click a command to copy it. Ticks are saved in this browser only.</p>
+  </div>
+  <div class="btnrow" style="margin:0"><button type="button" class="btn ghost" data-reset>Clear ticks</button><a class="btn" href="01-title.html">Start the talk <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a></div>
+</div>
+<ol class="checklist">
+  <li class="check"><label><input type="checkbox" data-check="ddev"><span class="box" aria-hidden="true"></span><span class="ct"><b>Start DDEV for both websites</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/drupal_ai_workshop &amp;&amp; ddev start" title="Click to copy"><code>cd ~/Source/drupal_ai_workshop &amp;&amp; ddev start</code><span class="copied">Copied</span></button><button type="button" class="cmd" data-copy="cd ~/Source/localgov-ai-demo &amp;&amp; ddev start" title="Click to copy"><code>cd ~/Source/localgov-ai-demo &amp;&amp; ddev start</code><span class="copied">Copied</span></button></span><span class="btnrow"><a class="btn ghost" href="https://drupal-ai-workshop.ddev.site/" target="_blank" rel="noopener">Workshop site <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg></a><a class="btn ghost" href="https://localgov-ai-demo.ddev.site/" target="_blank" rel="noopener">LocalGov site <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg></a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="catchup"><span class="box" aria-hidden="true"></span><span class="ct"><b>Run <code>ddev catch-up</code> on the workshop site, so “Ask Northmoor” works</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/drupal_ai_workshop &amp;&amp; git checkout 04_ai_content_review &amp;&amp; ddev catch-up" title="Click to copy"><code>cd ~/Source/drupal_ai_workshop &amp;&amp; git checkout 04_ai_content_review &amp;&amp; ddev catch-up</code><span class="copied">Copied</span></button></span><span class="small">This resets the workshop database and rebuilds the search index that Ask uses. Any changes you made to that site are lost.</span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="ask"><span class="box" aria-hidden="true"></span><span class="ct"><b>Ask Northmoor one question to warm up the AI</b><span class="small">The first answer after a restart can be slow. Get it out of the way now.</span><span class="btnrow"><a class="btn live" href="https://drupal-ai-workshop.ddev.site/ask" target="_blank" rel="noopener">Ask Northmoor <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg></a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="login"><span class="box" aria-hidden="true"></span><span class="ct"><b>Log in to both sites in this browser</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/drupal_ai_workshop &amp;&amp; ddev drush uli" title="Click to copy"><code>cd ~/Source/drupal_ai_workshop &amp;&amp; ddev drush uli</code><span class="copied">Copied</span></button><button type="button" class="cmd" data-copy="cd ~/Source/localgov-ai-demo &amp;&amp; ddev drush uli" title="Click to copy"><code>cd ~/Source/localgov-ai-demo &amp;&amp; ddev drush uli</code><span class="copied">Copied</span></button></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="review"><span class="box" aria-hidden="true"></span><span class="ct"><b>Check the bin page and run one AI review</b><span class="small">Draft service page at /christmas-bin-collections, with the GDS criterion. Remember: never click <b>Apply</b>.</span><span class="btnrow"><a class="btn live" href="https://localgov-ai-demo.ddev.site/christmas-bin-collections" target="_blank" rel="noopener">Bin page <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg></a><a class="btn live" href="https://localgov-ai-demo.ddev.site/admin/content/ai-review" target="_blank" rel="noopener">Review results <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg></a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="mcp"><span class="box" aria-hidden="true"></span><span class="ct"><b>Get the MCP chat ready</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/localgov-ai-demo/web/modules/contrib/localgov_mcp/client &amp;&amp; npm test" title="Click to copy"><code>cd ~/Source/localgov-ai-demo/web/modules/contrib/localgov_mcp/client &amp;&amp; npm test</code><span class="copied">Copied</span></button></span><span class="small">Set <code>OPENAI_API_KEY</code> in that terminal, make the font bigger, and delete old rehearsal banners.</span><span class="btnrow"><a class="btn live" href="https://localgov-ai-demo.ddev.site/admin/content/alert-banner" target="_blank" rel="noopener">Alert banners <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg></a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="screen"><span class="box" aria-hidden="true"></span><span class="ct"><b>Get your screen ready</b><span class="small">Turn off notifications, close Slack and email, share this browser window, then click <b>Start the talk</b>.</span></span></label></li>
+</ol>
+</main>
+<nav class="deck-nav" aria-label="Slides">
+  <span class="btn ghost navbtn" aria-disabled="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg> <span>Back</span></span>
+  <div><div class="counter">Presenter checklist</div></div>
+  <a class="btn navbtn" href="01-title.html" rel="next"><span>Start the talk</span> <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+</nav>
+<aside class="notes" aria-label="Speaker notes"><h4>Speaker notes · press N to hide</h4><ul>
+<li>This page is for you, not the audience. Start screen sharing on the title slide (01-title.html).</li>
+<li>ddev catch-up resets the workshop site&#x27;s database and rebuilds the vector index the Ask page depends on.</li>
+</ul></aside>
+<div class="keyhint">Arrow keys move · N notes · F full screen</div>
+<script src="deck.js"></script>
+</body>
+</html>
