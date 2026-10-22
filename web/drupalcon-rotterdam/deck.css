@@ -142,10 +142,10 @@ a:focus-visible { outline: 3px solid transparent; color: var(--ink); background:
 .stop.t .num { background: var(--positive); }
 .stop.b .num { background: var(--score-mid); }
 .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: grid; gap: .55rem; }
-.steps li { counter-increment: step; display: grid; grid-template-columns: 2em 1fr; gap: .8rem; align-items: baseline; margin: 0; }
+.steps li { counter-increment: step; position: relative; display: block; padding: .1em 0 0 2.8em; min-height: 1.7em; margin: 0; }
 .steps li::before {
-  content: counter(step); display: grid; place-items: center; width: 2em; height: 2em;
-  background: var(--sec); color: #fff; font-weight: 700; font-size: .85em; align-self: start;
+  content: counter(step); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 2em; height: 2em;
+  background: var(--sec); color: #fff; font-weight: 700; font-size: .85em;
 }
 
 /* buttons: GOV.UK green primary with hard shadow, grey secondary */
