@@ -113,9 +113,14 @@ bin?*, *What can I put in my recycling bin?* and *How do I order a copy of a bir
 certificate?* are answered with inline citations and a list of sources. *Who won the
 football world cup in 2014?* is declined.
 
-- In `localgov_scarfolk` the suggested question buttons show no text (the theme's
-  button styles), and the AI Answers blocks are full width instead of inside the page
-  container. Both need a small CSS fix in the theme.
+- In LocalGov themes the AI Answers blocks were full width instead of inside the page
+  container, and the suggested question buttons had white text on no background. The
+  custom module `localgov_ai_answers_layout` fixes both with a small stylesheet that it
+  attaches to the AI Answers blocks:
+
+  ```bash
+  ddev drush en localgov_ai_answers_layout
+  ```
 - For an off-topic question the agent sometimes still cites low-scoring pages
   (score below 0.2) that it says are not relevant. Forcing **min_score** on the RAG tool
   (see *More to try* in step 3) avoids this.
