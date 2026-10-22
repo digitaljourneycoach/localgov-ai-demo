@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Before you start · DrupalCon Rotterdam update</title>
+<link rel="stylesheet" href="deck.css">
+</head>
+<body class="section-prep" data-prev="" data-next="01-title.html" data-first="01-title.html" data-last="12-thanks.html">
+<header class="topbar">
+  <span class="brand"><span class="dot" aria-hidden="true"></span>DrupalCon Rotterdam → LocalGov Drupal</span>
+  <span class="section-tag">Presenter checklist · not for sharing</span>
+</header>
+<main class="slide" id="main">
+<div class="prep-head">
+  <div>
+    <p class="kicker">Pre-flight checks · do these before the webinar</p>
+    <h2 style="margin-bottom:.2em">Before you go live 🧰</h2>
+    <p class="small" style="margin:0">Tick each one off as you go. Click a command to copy it. Ticks are saved in this browser only.</p>
+  </div>
+  <div class="btnrow" style="margin:0"><button type="button" class="btn ghost" data-reset>Clear ticks</button><a class="btn" href="01-title.html">Start the talk →</a></div>
+</div>
+<ol class="checklist">
+  <li class="check"><label><input type="checkbox" data-check="ddev"><span class="box" aria-hidden="true"></span><span class="ct"><b>Start DDEV for both websites</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/drupal_ai_workshop &amp;&amp; ddev start" title="Click to copy"><code>cd ~/Source/drupal_ai_workshop &amp;&amp; ddev start</code><span class="copied">Copied</span></button><button type="button" class="cmd" data-copy="cd ~/Source/localgov-ai-demo &amp;&amp; ddev start" title="Click to copy"><code>cd ~/Source/localgov-ai-demo &amp;&amp; ddev start</code><span class="copied">Copied</span></button></span><span class="btnrow"><a class="btn ghost" href="https://drupal-ai-workshop.ddev.site/" target="_blank" rel="noopener">Workshop site ↗</a><a class="btn ghost" href="https://localgov-ai-demo.ddev.site/" target="_blank" rel="noopener">LocalGov site ↗</a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="catchup"><span class="box" aria-hidden="true"></span><span class="ct"><b>Run <code>ddev catch-up</code> on the workshop site, so “Ask Northmoor” works</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/drupal_ai_workshop &amp;&amp; git checkout 04_ai_content_review &amp;&amp; ddev catch-up" title="Click to copy"><code>cd ~/Source/drupal_ai_workshop &amp;&amp; git checkout 04_ai_content_review &amp;&amp; ddev catch-up</code><span class="copied">Copied</span></button></span><span class="small">This resets the workshop database and rebuilds the search index that Ask uses. Any changes you made to that site are lost.</span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="ask"><span class="box" aria-hidden="true"></span><span class="ct"><b>Ask Northmoor one question to warm up the AI</b><span class="small">The first answer after a restart can be slow. Get it out of the way now.</span><span class="btnrow"><a class="btn live" href="https://drupal-ai-workshop.ddev.site/ask" target="_blank" rel="noopener">Ask Northmoor ↗</a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="login"><span class="box" aria-hidden="true"></span><span class="ct"><b>Log in to both sites in this browser</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/drupal_ai_workshop &amp;&amp; ddev drush uli" title="Click to copy"><code>cd ~/Source/drupal_ai_workshop &amp;&amp; ddev drush uli</code><span class="copied">Copied</span></button><button type="button" class="cmd" data-copy="cd ~/Source/localgov-ai-demo &amp;&amp; ddev drush uli" title="Click to copy"><code>cd ~/Source/localgov-ai-demo &amp;&amp; ddev drush uli</code><span class="copied">Copied</span></button></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="review"><span class="box" aria-hidden="true"></span><span class="ct"><b>Check the bin page and run one AI review</b><span class="small">Draft service page at /christmas-bin-collections, with the GDS criterion. Remember: never click <b>Apply</b>.</span><span class="btnrow"><a class="btn live" href="https://localgov-ai-demo.ddev.site/christmas-bin-collections" target="_blank" rel="noopener">Bin page ↗</a><a class="btn live" href="https://localgov-ai-demo.ddev.site/admin/content/ai-review" target="_blank" rel="noopener">Review results ↗</a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="mcp"><span class="box" aria-hidden="true"></span><span class="ct"><b>Get the MCP chat ready</b><span class="cmds"><button type="button" class="cmd" data-copy="cd ~/Source/localgov-ai-demo/web/modules/contrib/localgov_mcp/client &amp;&amp; npm test" title="Click to copy"><code>cd ~/Source/localgov-ai-demo/web/modules/contrib/localgov_mcp/client &amp;&amp; npm test</code><span class="copied">Copied</span></button></span><span class="small">Set <code>OPENAI_API_KEY</code> in that terminal, make the font bigger, and delete old rehearsal banners.</span><span class="btnrow"><a class="btn live" href="https://localgov-ai-demo.ddev.site/admin/content/alert-banner" target="_blank" rel="noopener">Alert banners ↗</a></span></span></label></li>
+  <li class="check"><label><input type="checkbox" data-check="screen"><span class="box" aria-hidden="true"></span><span class="ct"><b>Get your screen ready</b><span class="small">Turn off notifications, close Slack and email, share this browser window, then click <b>Start the talk</b>.</span></span></label></li>
+</ol>
+</main>
+<nav class="deck-nav" aria-label="Slides">
+  <a class="btn ghost navbtn" href="" aria-disabled="true" tabindex="-1" rel="prev">← <span>Back</span></a>
+  <div>
+    <div class="tram">
+      <span class="progress" style="width:0.0%"></span>
+      <a class="" href="01-title.html"><span class="lbl">1. Rotterdam to the town hall</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 1: Rotterdam to the town hall</span></a>
+      <a class="" href="02-route.html"><span class="lbl">2. Today&#x27;s route</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 2: Today&#x27;s route</span></a>
+      <a class="workshop" href="03-workshop.html"><span class="lbl">3. The workshop</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 3: The workshop</span></a>
+      <a class="workshop" href="04-workshop-tour.html"><span class="lbl">4. What it can do</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 4: What it can do</span></a>
+      <a class="review" href="05-content-review.html"><span class="lbl">5. AI Content Review</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 5: AI Content Review</span></a>
+      <a class="review" href="06-spot-the-mistakes.html"><span class="lbl">6. Spot the mistakes</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 6: Spot the mistakes</span></a>
+      <a class="review" href="07-content-review-live.html"><span class="lbl">7. Content Review live</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 7: Content Review live</span></a>
+      <a class="mcp" href="08-mcp.html"><span class="lbl">8. LocalGov MCP</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 8: LocalGov MCP</span></a>
+      <a class="mcp" href="09-mcp-storm.html"><span class="lbl">9. Storm Brenda</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 9: Storm Brenda</span></a>
+      <a class="mcp" href="10-safety.html"><span class="lbl">10. Who&#x27;s in charge?</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 10: Who&#x27;s in charge?</span></a>
+      <a class="" href="11-next-stop.html"><span class="lbl">11. Your next stop</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 11: Your next stop</span></a>
+      <a class="" href="12-thanks.html"><span class="lbl">12. Bedankt!</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Slide 12: Bedankt!</span></a>
+    </div>
+    <div class="counter">Prep / 12</div>
+  </div>
+  <a class="btn navbtn" href="01-title.html"  rel="next"><span>Next</span> →</a>
+</nav>
+<aside class="notes" aria-label="Speaker notes"><h4>Speaker notes · press N to hide</h4><ul>
+<li>This page is for you, not the audience. Start screen sharing on the title slide (01-title.html).</li>
+<li>ddev catch-up resets the workshop site&#x27;s database and rebuilds the vector index the Ask page depends on.</li>
+</ul></aside>
+<div class="keyhint">← → move · N notes · F full screen</div>
+<script src="deck.js"></script>
+</body>
+</html>

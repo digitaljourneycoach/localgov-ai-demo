@@ -1,0 +1,515 @@
+# Example content for a typical London borough "Bins, recycling and waste"
+# section, built from LocalGov Drupal service landing, sub-landing and
+# service pages.
+#
+# Each item has a stable "id". Links written as "node:<id>" point at another
+# item in this file and are resolved to the real node when the content is
+# created. Items are created in the order they appear, so parents come first.
+#
+# Phone numbers use the Ofcom range reserved for drama (020 7946 0xxx) and
+# addresses are fictional.
+
+# The service landing page.
+- id: landing
+  type: landing
+  title: 'Bins, recycling and waste'
+  summary: 'Find your bin collection day, report a missed bin, book a bulky waste collection and find out what you can recycle.'
+  body: |
+    <p>We collect rubbish and recycling from around 140,000 homes across the borough every week. Find out when your bins are collected, what goes in each bin and how to get rid of larger items.</p>
+  top_tasks:
+    - { title: 'Find your bin collection day', link: 'node:collection-day' }
+    - { title: 'Report a missed bin collection', link: 'node:missed-collection' }
+    - { title: 'Book a bulky waste collection', link: 'node:bulky-waste' }
+    - { title: 'Order a new or replacement bin', link: 'node:new-bin' }
+  destinations:
+    - bin-collections
+    - recycling
+    - garden-waste
+    - bulky-waste
+    - street-cleaning
+    - commercial-waste
+  contact:
+    phone: '020 7946 0123'
+    email: 'waste.services@council.example'
+    contact_us_online: '/contact'
+    opening_hours: |
+      <p>Monday to Friday, 8am to 6pm<br>Saturday, 9am to 1pm</p>
+      <p>Closed on bank holidays.</p>
+    address: |
+      <p>Waste and Recycling Services<br>Town Hall<br>High Street</p>
+
+# Sub-landing: bin collections.
+- id: bin-collections
+  type: sublanding
+  parent: landing
+  title: 'Bin collections'
+  summary: 'Check your collection day, report a missed bin, order a new bin and get help if you cannot put your bins out.'
+  body: |
+    <p>Most homes have a weekly recycling and food waste collection and a fortnightly rubbish collection. Flats and homes above shops may have a different service.</p>
+  sections:
+    - header: 'Your collections'
+      links:
+        - collection-day
+        - missed-collection
+        - bank-holiday-collections
+    - header: 'Bins and containers'
+      links:
+        - new-bin
+        - flats-collections
+        - assisted-collections
+        - clinical-waste
+
+- id: collection-day
+  type: page
+  parent: bin-collections
+  title: 'Find your bin collection day'
+  summary: 'Check which day your rubbish, recycling and food waste are collected and sign up for a reminder.'
+  body: |
+    <p>Enter your postcode to find out which day your bins are collected and download your collection calendar.</p>
+    <p><a class="btn btn-start" href="/bin-day-finder">Find your collection day</a></p>
+    <h2>How often we collect</h2>
+    <table>
+      <thead><tr><th>Bin</th><th>What goes in it</th><th>How often</th></tr></thead>
+      <tbody>
+        <tr><td>Blue bin</td><td>Mixed recycling</td><td>Every week</td></tr>
+        <tr><td>Green caddy</td><td>Food waste</td><td>Every week</td></tr>
+        <tr><td>Black bin</td><td>Rubbish that cannot be recycled</td><td>Every 2 weeks</td></tr>
+        <tr><td>Brown bin</td><td>Garden waste (paid service)</td><td>Every 2 weeks, March to November</td></tr>
+      </tbody>
+    </table>
+    <h2>Putting your bins out</h2>
+    <ul>
+      <li>put your bins out by 6am on your collection day, or after 8pm the night before</li>
+      <li>leave them at the edge of your property with the handles facing the road</li>
+      <li>make sure the lid is closed, we cannot empty bins that are overflowing</li>
+      <li>take your bins back in by the end of your collection day</li>
+    </ul>
+    <h2>Get a reminder</h2>
+    <p>Sign up for a free email or text reminder the evening before your collection. We will also tell you if your collection day changes because of a bank holiday or bad weather.</p>
+  top_tasks:
+    - { title: 'Report a missed bin collection', link: 'node:missed-collection' }
+  related_links:
+    - { title: 'Christmas and bank holiday collections', link: 'node:bank-holiday-collections' }
+    - { title: 'What goes in your recycling bin', link: 'node:what-goes-in-recycling' }
+
+- id: missed-collection
+  type: page
+  parent: bin-collections
+  title: 'Report a missed bin collection'
+  summary: 'Tell us if your rubbish, recycling, food waste or garden waste was not collected on your collection day.'
+  body: |
+    <p>You can report a missed collection from 4pm on your collection day until the end of the next working day.</p>
+    <p><a class="btn btn-start" href="/report-missed-bin">Report a missed collection</a></p>
+    <h2>Before you report</h2>
+    <p>Check that:</p>
+    <ul>
+      <li>it is your collection day, collections can change after bank holidays</li>
+      <li>your bin was out by 6am</li>
+      <li>there is not a notice on your bin, crews leave a tag if they could not empty it</li>
+    </ul>
+    <h2>Why your bin may not have been emptied</h2>
+    <p>We will not empty a bin if:</p>
+    <ul>
+      <li>the lid does not close or there are extra bags on top</li>
+      <li>the recycling contains the wrong items, for example food or nappies</li>
+      <li>it is too heavy to move safely</li>
+    </ul>
+    <p>If your bin was tagged, fix the problem and put it out on your next collection day.</p>
+    <h2>What happens next</h2>
+    <p>We will return to collect your bin within 2 working days. Leave your bin out until it has been emptied.</p>
+    <p class="callout callout-primary">If your street has been missed by the whole crew, you only need to report it once. We will check your neighbours' bins too.</p>
+  related_links:
+    - { title: 'Find your bin collection day', link: 'node:collection-day' }
+    - { title: 'Assisted bin collections', link: 'node:assisted-collections' }
+
+- id: bank-holiday-collections
+  type: page
+  parent: bin-collections
+  title: 'Christmas and bank holiday collections'
+  summary: 'Find out how bank holidays change your bin collection day and how to recycle your Christmas tree.'
+  body: |
+    <p>We collect bins on most bank holidays. The exception is the Christmas and New Year period, when collections run one day later than usual.</p>
+    <h2>Christmas and New Year</h2>
+    <table>
+      <thead><tr><th>Usual collection day</th><th>New collection day</th></tr></thead>
+      <tbody>
+        <tr><td>Thursday 25 December</td><td>Saturday 27 December</td></tr>
+        <tr><td>Friday 26 December</td><td>Monday 29 December</td></tr>
+        <tr><td>Thursday 1 January</td><td>Saturday 3 January</td></tr>
+        <tr><td>Friday 2 January</td><td>Monday 5 January</td></tr>
+      </tbody>
+    </table>
+    <p>Collections return to normal from Monday 5 January.</p>
+    <h2>Extra recycling over Christmas</h2>
+    <p>You can leave extra cardboard next to your recycling bin. Flatten boxes and tie them together, or put them in a clear bag.</p>
+    <h2>Real Christmas trees</h2>
+    <p>We collect real Christmas trees for 2 weeks in January. Leave your tree next to your bins on your usual collection day. Remove all decorations, lights and the pot or stand. Trees taller than 6 feet must be cut in half.</p>
+  related_links:
+    - { title: 'Find your bin collection day', link: 'node:collection-day' }
+
+- id: new-bin
+  type: page
+  parent: bin-collections
+  title: 'Order a new or replacement bin'
+  summary: 'Request a new, replacement or larger bin, or extra food waste caddies and recycling bags.'
+  body: |
+    <p>You can order a bin if yours is lost, stolen or damaged, or if you have moved into a new home.</p>
+    <p><a class="btn btn-start" href="/order-a-bin">Order a bin</a></p>
+    <h2>Costs</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Replacement black rubbish bin</td><td>£35</td></tr>
+        <tr><td>Blue recycling bin</td><td>Free</td></tr>
+        <tr><td>Food waste caddy and kitchen caddy</td><td>Free</td></tr>
+        <tr><td>Bins for new-build homes</td><td>£75 a set, paid by the developer</td></tr>
+      </tbody>
+    </table>
+    <p>We will deliver your bin within 10 working days.</p>
+    <h2>Larger rubbish bins</h2>
+    <p>You can ask for a larger black bin if there are 6 or more people living in your home, or if someone in your household has a medical condition that creates extra waste. We may visit to check what you are recycling first.</p>
+    <h2>Free food caddy liners</h2>
+    <p>Tie a request for more liners to the handle of your food caddy and the crew will leave a roll on your next collection day.</p>
+  related_links:
+    - { title: 'What goes in your recycling bin', link: 'node:what-goes-in-recycling' }
+
+- id: flats-collections
+  type: page
+  parent: bin-collections
+  title: 'Bin collections for flats'
+  summary: 'How rubbish and recycling are collected from blocks of flats and homes above shops.'
+  body: |
+    <p>If you live in a flat, you will usually share large communal bins with your neighbours. These are emptied at least once a week.</p>
+    <h2>Communal bins</h2>
+    <ul>
+      <li>communal bins with a blue lid are for mixed recycling</li>
+      <li>communal bins with a black lid are for rubbish</li>
+      <li>food waste bins are brown and are in the bin store</li>
+    </ul>
+    <p>If your bin store is full, overflowing or has been blocked, tell your managing agent or landlord first. If it is a council block, report it to us.</p>
+    <h2>Homes above shops</h2>
+    <p>Many homes above shops do not have space for bins. Instead, we give you clear recycling sacks and collect bags from the pavement on set days and times. Only put bags out during your collection time, otherwise you could be fined for fly-tipping.</p>
+    <h2>Getting recycling into your block</h2>
+    <p>If your block does not have recycling bins, your managing agent can ask us to install them. There is no charge for recycling bins in blocks of flats.</p>
+  related_links:
+    - { title: 'Report fly-tipping', link: 'node:fly-tipping' }
+
+- id: assisted-collections
+  type: page
+  parent: bin-collections
+  title: 'Assisted bin collections'
+  summary: 'Get help with your bins if you cannot move them to the kerb because of age, disability or ill health.'
+  body: |
+    <p>If you cannot put your bins out yourself and nobody in your home can do it for you, our crews can collect them from your property and return them afterwards.</p>
+    <h2>Who can apply</h2>
+    <p>You can get an assisted collection if you:</p>
+    <ul>
+      <li>have a disability or long-term health condition that means you cannot move your bins</li>
+      <li>are recovering from an operation or illness, for up to 3 months</li>
+      <li>live with nobody else who is able to move the bins</li>
+    </ul>
+    <p>The service is free.</p>
+    <p><a class="btn btn-start" href="/assisted-collection">Apply for an assisted collection</a></p>
+    <h2>After you apply</h2>
+    <p>We will contact you within 5 working days to agree where you want your bins collected from. We review assisted collections every 2 years.</p>
+  related_links:
+    - { title: 'Clinical waste collections', link: 'node:clinical-waste' }
+
+- id: clinical-waste
+  type: page
+  parent: bin-collections
+  title: 'Clinical waste collections'
+  summary: 'Arrange a free collection of clinical waste, sharps and offensive waste from your home.'
+  body: |
+    <p>We offer a free collection service for clinical waste produced at home, for example from home dialysis or wound dressings.</p>
+    <h2>Clinical waste and sharps</h2>
+    <p>To arrange a collection you need a referral from your GP, district nurse or pharmacist. They will confirm the type of waste and how much you produce.</p>
+    <p>Sharps, such as needles, must go in a yellow sharps box. Ask your pharmacist for a box. When it is full, we collect it and leave you a new one.</p>
+    <h2>Offensive waste</h2>
+    <p>Incontinence pads and stoma bags are not clinical waste. Double-bag them and put them in your black rubbish bin. If you produce a lot of this waste, you can ask for a larger rubbish bin.</p>
+    <p><a class="btn btn-start" href="/clinical-waste">Request a clinical waste collection</a></p>
+  related_links:
+    - { title: 'Order a new or replacement bin', link: 'node:new-bin' }
+
+# Sub-landing: recycling.
+- id: recycling
+  type: sublanding
+  parent: landing
+  title: 'Recycling'
+  summary: 'What you can recycle at home, how to recycle food waste and where to take things we do not collect.'
+  body: |
+    <p>Last year residents recycled 34% of their household waste. Recycling the right things in the right bin helps us recycle more and keeps your council tax down.</p>
+  sections:
+    - header: 'Recycling at home'
+      links:
+        - what-goes-in-recycling
+        - food-waste
+        - small-items
+    - header: 'Recycling centres'
+      links:
+        - recycling-centres
+
+- id: what-goes-in-recycling
+  type: page
+  parent: recycling
+  title: 'What goes in your recycling bin'
+  summary: 'Check what you can and cannot put in your blue recycling bin.'
+  body: |
+    <p>Put all your recycling loose in your blue bin. Do not put recycling in plastic bags.</p>
+    <h2>Yes please</h2>
+    <ul class="list-checked">
+      <li>paper, newspapers, magazines and envelopes</li>
+      <li>cardboard, flattened</li>
+      <li>food and drink cartons, such as juice and soup cartons</li>
+      <li>plastic bottles, pots, tubs and trays</li>
+      <li>glass bottles and jars</li>
+      <li>food and drink tins and cans</li>
+      <li>empty aerosols and clean foil</li>
+    </ul>
+    <h2>No thank you</h2>
+    <ul>
+      <li>plastic bags and film, take these to large supermarkets</li>
+      <li>food waste, use your food caddy</li>
+      <li>nappies</li>
+      <li>textiles and shoes</li>
+      <li>polystyrene</li>
+      <li>batteries and electricals, these can cause fires in our lorries</li>
+    </ul>
+    <h2>Getting it right</h2>
+    <p>Empty and rinse food and drink containers. They do not need to be spotless. Leave lids on bottles.</p>
+    <p class="callout callout-primary">If a bin contains the wrong items, the whole lorry load can be rejected and sent for incineration.</p>
+  related_links:
+    - { title: 'Food waste recycling', link: 'node:food-waste' }
+    - { title: 'Recycling batteries, electricals and textiles', link: 'node:small-items' }
+
+- id: food-waste
+  type: page
+  parent: recycling
+  title: 'Food waste recycling'
+  summary: 'How to use your food waste caddy and what happens to your food waste.'
+  body: |
+    <p>Your food waste is collected every week and turned into electricity and fertiliser for farms.</p>
+    <h2>What you can put in your caddy</h2>
+    <ul class="list-checked">
+      <li>raw and cooked food, including meat and fish bones</li>
+      <li>fruit and vegetable peelings</li>
+      <li>bread, rice and pasta</li>
+      <li>tea bags and coffee grounds</li>
+      <li>out of date food, without the packaging</li>
+    </ul>
+    <h2>How to use your caddies</h2>
+    <ol>
+      <li>Line your kitchen caddy with a compostable liner or newspaper.</li>
+      <li>When it is full, tie the liner and put it in your outdoor caddy.</li>
+      <li>Put your outdoor caddy out with your other bins on collection day.</li>
+    </ol>
+    <p>Do not use plastic bags. You can use any compostable liner with the seedling logo.</p>
+  related_links:
+    - { title: 'Order a new or replacement bin', link: 'node:new-bin' }
+
+- id: small-items
+  type: page
+  parent: recycling
+  title: 'Recycling batteries, electricals and textiles'
+  summary: 'How to recycle batteries, small electrical items, clothes and shoes from home.'
+  body: |
+    <p>We collect some items that do not go in your recycling bin, as long as you put them out separately on your collection day.</p>
+    <h2>Batteries</h2>
+    <p>Put household batteries in a clear, sealed sandwich bag on top of your blue bin lid. Batteries in bins cause fires in our collection lorries.</p>
+    <h2>Small electricals</h2>
+    <p>Put small electrical items, such as kettles, toasters and phones, in a carrier bag next to your blue bin. Items must be smaller than a shoebox.</p>
+    <h2>Clothes, shoes and textiles</h2>
+    <p>Put clean clothes, shoes tied in pairs and household textiles in a tied carrier bag next to your blue bin. You can also use textile banks at supermarkets and at our reuse and recycling centres.</p>
+  related_links:
+    - { title: 'Reuse and recycling centres', link: 'node:recycling-centres' }
+
+- id: recycling-centres
+  type: page
+  parent: recycling
+  title: 'Reuse and recycling centres'
+  summary: 'Opening times, what you can take and how to book a visit to a reuse and recycling centre.'
+  body: |
+    <p>Residents can take household waste and recycling to our reuse and recycling centre for free. You need to book a slot before you visit.</p>
+    <p><a class="btn btn-start" href="/book-recycling-centre">Book a visit</a></p>
+    <h2>Riverside Reuse and Recycling Centre</h2>
+    <p>Wharf Road</p>
+    <p>Open every day, 8am to 5pm (8am to 4pm from October to March). Closed on 25 and 26 December and 1 January.</p>
+    <h2>What you can take</h2>
+    <ul>
+      <li>cardboard, paper, glass, cans and plastic</li>
+      <li>garden waste</li>
+      <li>furniture and mattresses</li>
+      <li>fridges, freezers, TVs and other electricals</li>
+      <li>wood, metal and textiles</li>
+      <li>paint, engine oil and car batteries</li>
+      <li>up to 6 bags of DIY rubble a month</li>
+    </ul>
+    <h2>Vans and trailers</h2>
+    <p>You need a free permit to bring a van, pick-up or trailer. You can get up to 12 permits a year.</p>
+    <h2>Reuse shop</h2>
+    <p>Our reuse shop on site sells good quality furniture, bikes and household items that have been donated.</p>
+  related_links:
+    - { title: 'Book a bulky waste collection', link: 'node:bulky-waste' }
+
+# Landing-level service pages.
+- id: garden-waste
+  type: page
+  parent: landing
+  title: 'Garden waste collections'
+  summary: 'Subscribe to the fortnightly garden waste collection service and check what goes in your brown bin.'
+  body: |
+    <p>Our garden waste service collects a brown bin from your home every 2 weeks from March to November.</p>
+    <p><a class="btn btn-start" href="/garden-waste-subscription">Subscribe to garden waste collections</a></p>
+    <h2>Costs</h2>
+    <table>
+      <thead><tr><th>Subscription</th><th>Cost for one year</th></tr></thead>
+      <tbody>
+        <tr><td>One 240 litre brown bin</td><td>£85</td></tr>
+        <tr><td>Each extra bin</td><td>£60</td></tr>
+        <tr><td>Residents who get council tax support</td><td>£42.50</td></tr>
+      </tbody>
+    </table>
+    <p>If you subscribe after the season has started, the price is reduced.</p>
+    <h2>What goes in your brown bin</h2>
+    <ul class="list-checked">
+      <li>grass cuttings, leaves and weeds</li>
+      <li>hedge trimmings and small branches</li>
+      <li>flowers and plants</li>
+    </ul>
+    <p>Do not put in soil, turf, food waste, animal waste or plastic plant pots.</p>
+    <h2>Home composting</h2>
+    <p>You can buy a discounted compost bin from £12. Home composting is free and gives you compost for your garden.</p>
+  related_links:
+    - { title: 'Reuse and recycling centres', link: 'node:recycling-centres' }
+
+- id: bulky-waste
+  type: page
+  parent: landing
+  title: 'Book a bulky waste collection'
+  summary: 'Book a collection for large household items such as furniture, mattresses and fridges.'
+  body: |
+    <p>We collect large household items that are too big for your bin, for a charge.</p>
+    <p><a class="btn btn-start" href="/book-bulky-waste">Book a collection</a></p>
+    <h2>Costs</h2>
+    <table>
+      <thead><tr><th>Number of items</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Up to 3 items</td><td>£40</td></tr>
+        <tr><td>4 to 6 items</td><td>£65</td></tr>
+        <tr><td>Fridge or freezer</td><td>£30 each</td></tr>
+      </tbody>
+    </table>
+    <p>Residents who get council tax support pay half price.</p>
+    <h2>What we can collect</h2>
+    <ul>
+      <li>sofas, chairs, tables and wardrobes, which must be taken apart</li>
+      <li>beds and mattresses</li>
+      <li>fridges, freezers, washing machines and cookers</li>
+      <li>carpets, cut into lengths of up to 2 metres</li>
+      <li>bikes and garden furniture</li>
+    </ul>
+    <p>We cannot collect building waste, car parts, bathroom suites or hazardous waste such as asbestos.</p>
+    <h2>On your collection day</h2>
+    <p>Leave the items outside your property by 7am. If you live in a flat, leave them at the main entrance to your block. You do not need to be at home.</p>
+    <h2>Give it away</h2>
+    <p>If your items are in good condition, consider giving them to a local charity or selling them online. Some charities will collect furniture for free.</p>
+  related_links:
+    - { title: 'Reuse and recycling centres', link: 'node:recycling-centres' }
+    - { title: 'Report fly-tipping', link: 'node:fly-tipping' }
+
+# Sub-landing: street cleaning and fly-tipping.
+- id: street-cleaning
+  type: sublanding
+  parent: landing
+  title: 'Street cleaning and fly-tipping'
+  summary: 'Report fly-tipping, litter, graffiti and other problems on our streets.'
+  body: |
+    <p>We sweep every residential street at least once a week and town centres every day. Tell us about problems so we can put them right.</p>
+  sections:
+    - header: 'Report a problem'
+      links:
+        - fly-tipping
+        - street-cleaning-problem
+        - graffiti
+
+- id: fly-tipping
+  type: page
+  parent: street-cleaning
+  title: 'Report fly-tipping'
+  summary: 'Tell us about rubbish dumped on a street, alleyway or other public land.'
+  body: |
+    <p>Fly-tipping is dumping rubbish illegally. We aim to clear fly-tipping from public land within 2 working days.</p>
+    <p><a class="btn btn-start" href="/report-fly-tipping">Report fly-tipping</a></p>
+    <h2>What to tell us</h2>
+    <ul>
+      <li>where the rubbish is, use the map to mark the exact location</li>
+      <li>what has been dumped and roughly how much</li>
+      <li>a photo, if you can take one safely</li>
+    </ul>
+    <p class="callout callout-danger">Do not touch the waste or confront anyone who is dumping it. It may contain needles, asbestos or chemicals.</p>
+    <h2>Fines for fly-tipping</h2>
+    <p>Fly-tipping is a crime. You can be fined up to £1,000 on the spot, or prosecuted. You are also responsible for your rubbish if you pay someone else to get rid of it, so always check they are a registered waste carrier.</p>
+    <h2>Private land</h2>
+    <p>The landowner is responsible for clearing fly-tipping on private land. We can investigate who dumped it.</p>
+  related_links:
+    - { title: 'Book a bulky waste collection', link: 'node:bulky-waste' }
+
+- id: street-cleaning-problem
+  type: page
+  parent: street-cleaning
+  title: 'Report a street cleaning problem'
+  summary: 'Report litter, broken glass, overflowing litter bins, dog fouling or leaves on a street.'
+  body: |
+    <p>Tell us about a street that needs cleaning.</p>
+    <p><a class="btn btn-start" href="/report-street-cleaning">Report a street cleaning problem</a></p>
+    <h2>How quickly we respond</h2>
+    <table>
+      <thead><tr><th>Problem</th><th>Response time</th></tr></thead>
+      <tbody>
+        <tr><td>Broken glass, needles or syringes</td><td>Within 4 hours</td></tr>
+        <tr><td>Overflowing litter bins</td><td>Within 1 working day</td></tr>
+        <tr><td>Litter and dog fouling</td><td>Within 2 working days</td></tr>
+        <tr><td>Fallen leaves</td><td>Within 5 working days</td></tr>
+      </tbody>
+    </table>
+    <h2>Litter picks</h2>
+    <p>We support community litter picks. We can lend you litter pickers, bags and hi-vis vests and collect the rubbish afterwards.</p>
+  related_links:
+    - { title: 'Report fly-tipping', link: 'node:fly-tipping' }
+
+- id: graffiti
+  type: page
+  parent: street-cleaning
+  title: 'Report graffiti'
+  summary: 'Report graffiti and fly-posting on public property and find out about our removal service.'
+  body: |
+    <p>We remove graffiti from council property for free. We remove offensive graffiti within 24 hours.</p>
+    <p><a class="btn btn-start" href="/report-graffiti">Report graffiti</a></p>
+    <h2>Graffiti on private property</h2>
+    <p>If graffiti is on your home or business and can be seen from the street, we can remove it for free if you sign a waiver. We cannot remove graffiti from listed buildings.</p>
+    <h2>Graffiti on other property</h2>
+    <p>Phone boxes, bus shelters, railway bridges and utility boxes are the responsibility of the company that owns them. We will pass your report on.</p>
+  related_links:
+    - { title: 'Report a street cleaning problem', link: 'node:street-cleaning-problem' }
+
+- id: commercial-waste
+  type: page
+  parent: landing
+  title: 'Business waste and recycling'
+  summary: 'Arrange a waste and recycling collection for your business and understand your legal duties.'
+  body: |
+    <p>All businesses must arrange for their waste to be collected by a registered waste carrier. You cannot use the household collection service or take business waste to a reuse and recycling centre.</p>
+    <h2>Our commercial waste service</h2>
+    <p>We offer flexible collections for businesses of all sizes, from daily sack collections for shops to large bins for offices and restaurants. All our customers get free recycling collections.</p>
+    <p><a class="btn btn-start" href="/business-waste-quote">Get a quote</a></p>
+    <h2>Your duty of care</h2>
+    <p>You must:</p>
+    <ul>
+      <li>keep your waste safe and secure until it is collected</li>
+      <li>use a registered waste carrier</li>
+      <li>keep waste transfer notes for 2 years</li>
+      <li>separate recycling from general waste</li>
+    </ul>
+    <p>You can be fined up to £300 if you cannot show how your business waste is collected.</p>
+  related_links:
+    - { title: 'Report fly-tipping', link: 'node:fly-tipping' }
