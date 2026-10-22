@@ -1,8 +1,8 @@
 # Step 5: AI Search and AI Answers on the LocalGov Drupal demo
 
 **Goal:** the same **Ask** page as in [step 3](03_ai_search.md), but on the LocalGov
-Drupal demo site (`d11-localgov`): residents ask a question in their own words at
-[/ask](https://d11-localgov.ddev.site/ask) and get an answer written from the council
+Drupal demo site (`localgov-ai-demo`): residents ask a question in their own words at
+[/ask](https://localgov-ai-demo.ddev.site/ask) and get an answer written from the council
 pages, with the source pages listed.
 
 Follow [step 3](03_ai_search.md) for how it works. This page lists only what is
@@ -97,7 +97,7 @@ ddev drush role:perm:add authenticated 'use ai answers'
 ```
 
 `ai_agents_runner_` was added to the thread tag prefixes in
-[AI Logging Settings](https://d11-localgov.ddev.site/admin/config/ai/logging/settings).
+[AI Logging Settings](https://localgov-ai-demo.ddev.site/admin/config/ai/logging/settings).
 
 To check that no page is missing chunks, compare `total_chunks` in the `search_api_item`
 table with the rows per page in `content_database_index`. To re-index a few pages, do
