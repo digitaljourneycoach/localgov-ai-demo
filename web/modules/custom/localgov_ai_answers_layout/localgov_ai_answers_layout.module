@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Fits the AI Answers blocks into the LocalGov page layout.
+ */
+
+use Drupal\Core\Block\BlockPluginInterface;
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function localgov_ai_answers_layout_block_view_alter(array &$build, BlockPluginInterface $block) {
+  if ($block->getBaseId() !== NULL && str_starts_with($block->getBaseId(), 'ai_answers_')) {
+    $build['#attached']['library'][] = 'localgov_ai_answers_layout/layout';
+  }
+}

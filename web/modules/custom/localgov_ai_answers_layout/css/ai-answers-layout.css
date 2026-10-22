@@ -1,0 +1,24 @@
+/**
+ * The page content of LocalGov themes is wrapped in .lgd-container with
+ * horizontal padding. Blocks placed after it in the content region are not,
+ * so give the AI Answers blocks the same width and gutters.
+ */
+.lgd-region--content .block-ai-answers {
+  box-sizing: border-box;
+  max-width: var(--width-container);
+  margin-inline: auto;
+  padding-inline: var(--spacing-padding-horizontal);
+}
+
+/**
+ * LocalGov buttons have white text on a filled background, but AI Answers
+ * removes the background of the suggested questions. Use the link colour.
+ */
+.ai-answers-question__suggestion {
+  color: var(--color-link);
+}
+.ai-answers-question__suggestion:hover,
+.ai-answers-question__suggestion:focus {
+  color: var(--button-text-color-hover);
+  background-color: var(--button-bg-color-hover);
+}
