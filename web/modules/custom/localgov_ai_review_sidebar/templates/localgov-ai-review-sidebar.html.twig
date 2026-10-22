@@ -1,0 +1,89 @@
+{#
+/**
+ * @file
+ * The "Review suggestions" list in the node edit form sidebar.
+ *
+ * Available variables:
+ * - overall: NULL when nothing has been reviewed, otherwise:
+ *   - score: Average score of the reviewed criteria (0-100).
+ *   - tier: 'good', 'warning', 'critical' or 'none'.
+ *   - tier_label: Pass, Warning, Fail or Not graded.
+ *   - reviewed: How long ago the latest review ran.
+ * - criteria: List of reviewed criteria, each with label, score, tier,
+ *   tier_label, explanation, stale (content changed since the review) and
+ *   suggestions. Each suggestion has id, target (field machine name),
+ *   field_label, original_value, suggested_value, rationale, decision and
+ *   decision_label.
+ * - suggestion_count: Number of suggestions across all criteria.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="lgd-ai-review" data-lgd-ai-review>
+  {% if not overall %}
+    <p class="lgd-ai-review__empty">{{ 'This page has not been reviewed yet. Use the Content Review section to run a review.'|t }}</p>
+  {% else %}
+    <div class="lgd-ai-review__overall lgd-ai-review__tier--{{ overall.tier }}">
+      <span class="lgd-ai-review__overall-label">{{ 'Overall'|t }}</span>
+      <span class="lgd-ai-review__score">{{ overall.score }}<span class="lgd-ai-review__score-max">/100</span></span>
+      <span class="lgd-ai-review__badge">{{ overall.tier_label }}</span>
+      {% if overall.reviewed %}
+        <span class="lgd-ai-review__reviewed">{{ 'Reviewed @ago'|t({'@ago': overall.reviewed}) }}</span>
+      {% endif %}
+    </div>
+
+    {% for criterion in criteria %}
+      <section class="lgd-ai-review__criterion">
+        <h3 class="lgd-ai-review__criterion-title lgd-ai-review__tier--{{ criterion.tier }}">
+          <span>{{ criterion.label }}</span>
+          <span class="lgd-ai-review__criterion-score">
+            {{ criterion.score ?? '–' }} · <span class="lgd-ai-review__badge">{{ criterion.tier_label }}</span>
+          </span>
+        </h3>
+        {% if criterion.stale %}
+          <p class="lgd-ai-review__stale">{{ 'The content has changed since this review, so some quoted text may no longer be on the page.'|t }}</p>
+        {% endif %}
+        {% if criterion.explanation %}
+          <p class="lgd-ai-review__explanation">{{ criterion.explanation }}</p>
+        {% endif %}
+
+        {% if criterion.suggestions %}
+          <ol class="lgd-ai-review__list">
+            {% for suggestion in criterion.suggestions %}
+              <li class="lgd-ai-review__item" data-decision="{{ suggestion.decision }}">
+                <button
+                  type="button"
+                  class="lgd-ai-review__locate"
+                  data-lgd-ai-review-target="{{ suggestion.target }}"
+                  data-lgd-ai-review-quote="{{ suggestion.original_value }}"
+                  title="{{ 'Show this in the form'|t }}"
+                >
+                  <span class="lgd-ai-review__item-head">
+                    <span class="lgd-ai-review__field">{{ suggestion.field_label }}</span>
+                    <span class="lgd-ai-review__decision lgd-ai-review__decision--{{ suggestion.decision }}">{{ suggestion.decision_label }}</span>
+                  </span>
+                  {% if suggestion.original_value is not empty %}
+                    <span class="lgd-ai-review__value lgd-ai-review__value--before">
+                      <span class="visually-hidden">{{ 'Current text:'|t }} </span>{{ suggestion.original_value }}
+                    </span>
+                  {% endif %}
+                  {% if suggestion.suggested_value is not empty %}
+                    <span class="lgd-ai-review__value lgd-ai-review__value--after">
+                      <span class="visually-hidden">{{ 'Suggested text:'|t }} </span>{{ suggestion.suggested_value }}
+                    </span>
+                  {% endif %}
+                  {% if suggestion.rationale %}
+                    <span class="lgd-ai-review__rationale">{{ suggestion.rationale }}</span>
+                  {% endif %}
+                  <span class="lgd-ai-review__not-found" hidden>{{ 'Not found in the form. It may be in a block or listing on the page, or has already been changed.'|t }}</span>
+                </button>
+              </li>
+            {% endfor %}
+          </ol>
+        {% else %}
+          <p class="lgd-ai-review__none">{{ 'No suggestions for this criterion.'|t }}</p>
+        {% endif %}
+      </section>
+    {% endfor %}
+  {% endif %}
+</div>

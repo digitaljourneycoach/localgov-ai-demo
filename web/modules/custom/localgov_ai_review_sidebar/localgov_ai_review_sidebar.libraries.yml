@@ -1,0 +1,10 @@
+sidebar:
+  css:
+    component:
+      css/review-suggestions-sidebar.css: {}
+  js:
+    js/review-suggestions-sidebar.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/drupal.announce
