@@ -1,0 +1,4 @@
+services:
+  localgov_demo_bins.content_manager:
+    class: Drupal\localgov_demo_bins\BinsContentManager
+    arguments: ['@entity_type.manager', '@extension.list.module', '@logger.factory']
